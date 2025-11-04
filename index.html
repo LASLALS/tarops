@@ -1,0 +1,169 @@
+# Создаем файл с содержимым
+@'
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Lagler</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000000;
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: auto;
+        }
+        
+        /* ОБОИ */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                url('https://i.ibb.co/nsKmt7Q9/photo-2024-12-03-01-48-24.jpg') center/cover;
+            z-index: 0;
+        }
+        
+        /* ЗАТЕМНЕНИЕ ДЛЯ ЛУЧШЕЙ ЧИТАЕМОСТИ */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        /* СНЕГ */
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .snowflake {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            pointer-events: none;
+            user-select: none;
+            animation: snowFall linear forwards;
+        }
+        
+        @keyframes snowFall {
+            0% {
+                transform: translateY(-100px) translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) translateX(var(--end-x));
+                opacity: 0;
+            }
+        }
+        
+        /* АНИМИРОВАННЫЙ НИКНЕЙМ */
+        .name-title {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 3;
+        }
+        
+        .name-text {
+            font-size: 64px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: 5px;
+            opacity: 0;
+        }
+        
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: letterAppear 0.3s ease forwards;
+        }
+        
+        @keyframes letterAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+            margin-top: 60px;
+        }
+        
+        /* ПЕРЕКЛЮЧАТЕЛЬ СТРАНИЦ */
+        .page-switcher {
+            position: relative;
+            width: 300px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            margin: 0 auto 30px;
+            display: flex;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .switch-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .switch-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 148px;
+            height: 46px;
+            background: linear-gradient(45deg, #8b5cf6, #a855f7, #c084fc);
+            border-radius: 23
